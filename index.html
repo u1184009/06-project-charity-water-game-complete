@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Drop Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-wrapper">
+        <h1 class="game-title">Water Drop</h1>
+        <p class="game-tagline">It's a blizzard and you need water! Drag the jerry can and catch the drops of water and falling snow, avoid the sticks!</p>
+        <div class="score-panel">
+            <div class="score">
+                <img src="img/water-can-transparent.png" class="score-can-icon" alt="Water can icon">
+                <span>Filled Cans: <span id="score">0</span></span>
+            </div>
+            <div class="timer">Time: <span id="time">30</span>s</div>
+            <div class="lives">Cans Left:<span id="lives">💧 💧 💧</span></div>
+            <button id="start-btn">Start Game</button>
+            <button id="restart-btn">Restart Game</button>
+        </div>
+        
+        <div id="game-container">
+          <img src="img/water-can-transparent.png" id="water-can" alt="Water Can">
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

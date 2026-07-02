@@ -1,0 +1,260 @@
+/* Charity: water Brand Colors & Fonts
+
+Primary Colors:
+- Yellow:     #FFC907
+- Blue:       #2E9DF7
+
+Secondary Colors:
+- Light Blue: #8BD1CB
+- Green:      #4FCB53
+- Orange:     #FF902A
+- Red:        #F5402C
+- Dark Green: #159A48
+- Pink:       #F16061
+
+Fonts:
+- Proxima Nova
+- Avenir
+
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f7d64a;
+    font-family: Arial, sans-serif;
+}
+
+.game-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.score-panel {
+    display: flex;
+    justify-content: space-between;  /* Space between score and button */
+    align-items: center;
+    width: 800px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.timer {
+    flex: 0 1 auto;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.lives {
+    flex: 0 1 auto;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#game-container {
+    width: 800px;
+    height: 600px;
+    background-color: #e6f7ff;
+    background-image: url('img/blizzards.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 2px solid #333;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    touch-action: none;
+}
+
+
+#start-btn {
+    padding: 8px 16px;
+    background-color: #8BD1CB;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#restart-btn:hover {
+    background-color: #8BD1CB;
+}
+
+#restart-btn {
+    padding: 8px 16px;
+    background-color: #8BD1CB;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#start-btn:hover {
+    background-color:#8BD1CB;
+}
+
+.score {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 0 1 auto;  /* Don't grow, can shrink, auto basis */
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.score-can-icon {
+    width: 28px;
+    height: auto;
+    display: inline-block;
+}
+
+/* Water drops */
+
+.water-drop {
+    position: absolute;
+    animation: dropFall linear forwards;
+    cursor: pointer;
+}
+
+.water-drop img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    pointer-events: none;
+}
+
+.water-drop:hover {
+    transform: scale(1.1);  /* Slight grow effect on hover */
+}
+
+/*Jerry can Water*/
+#water-can {
+    position: absolute;
+    width: 80px;      /* size value */
+    height: auto; 
+    left: 350px;
+    top: 470px;
+    cursor: grab;
+    user-select: none;
+}
+
+#water-can:active {
+    cursor: grabbing;
+}
+
+#game-over-modal {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 20;
+    cursor: pointer;
+}
+
+.game-over-content {
+    background: white;
+    color: #222;
+    padding: 24px 28px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    max-width: 280px;
+    width: 80%;
+    cursor: default;
+}
+
+.game-over-content h2 {
+    margin-bottom: 10px;
+    color: #8BD1CB;
+}
+
+.game-over-content p {
+    margin: 6px 0;
+    font-size: 16px;
+}
+
+.bad-drop {
+    
+}
+
+.confetti-piece {
+    position: absolute;
+    width: 10px;
+    height: 18px;
+    border-radius: 2px;
+    opacity: 0.95;
+    animation: confettiFall 1.2s ease-out forwards;
+    animation-delay: var(--delay, 0s);
+    pointer-events: none;
+}
+
+@keyframes confettiFall {
+    0% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate3d(var(--x-offset), var(--y-offset), 0) rotate(var(--rotation, 360deg));
+        opacity: 0;
+    }
+}
+
+.game-title {
+    color: #131313;
+    font-size: 48px;
+    margin-top: 0;
+    margin-bottom: 5px;  /* reduced from 20px */
+    text-align: center;
+}
+
+.game-tagline {
+    color: #131313;
+    font-size: 18px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+@keyframes dropFall {
+    from {
+        transform: translateY(-20px);
+    }
+    to {
+        transform: translateY(600px);
+    }
+}
+
+@media (max-width: 850px) {
+    .game-wrapper, .score-panel, #game-container {
+        width: 90vw;
+    }
+    
+    #game-container {
+        height: 60vh;
+        background-size: cover;
+        background-position: center;
+    }
+
+    #water-can {
+        width: 60px;
+        left: 50%;
+        top: auto;
+        bottom: 12%;
+        transform: translateX(-50%);
+    }
+}
