@@ -56,11 +56,11 @@ function startGame() {
 
   // Create new drops interval
   if(difficultySelect.value === "easy"){
-    dropMaker = setInterval(createDrop, 350);
+    dropMaker = setInterval(createDrop, 450);
   }else if(difficultySelect.value === "medium"){
     dropMaker = setInterval(createDrop, 300);
   }else if(difficultySelect.value === "hard"){
-    dropMaker = setInterval(createDrop, 270);
+    dropMaker = setInterval(createDrop, 250);
   }
 
   // Start timer
