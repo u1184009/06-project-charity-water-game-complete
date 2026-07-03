@@ -349,7 +349,6 @@ function checkCollision(drop){
           gameOver();
         }
         if(timerValue >= 30){
-          timerValue -= 20;
           if(difficultySelect.value === "easy"){
             timerValue -= 20;
           }else if(difficultySelect.value === "medium"){
