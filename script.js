@@ -15,7 +15,7 @@ const waterCan = document.getElementById("water-can");
 const gameContainer = document.getElementById("game-container");
 const initialCanPosition = { left: 350, top: 470 };
 const difficultySelect = document.getElementById("difficulty");// Store difficulty selected
-const maxLimit ;//Max limit will be difficulty based
+let maxLimit = 15; // Max limit will be difficulty based
 const waterCollect = new Audio("sounds/slosh.mp3");
 const stickHit = new Audio("sounds/crunch.mp3");
 const confettiSound = new Audio("sounds/party-horn.mp3");
@@ -351,12 +351,14 @@ function checkCollision(drop){
         if(timerValue >= 30){
           if(difficultySelect.value === "easy"){
             timerValue -= 20;
+            timeDisplay.textContent = timerValue;
           }else if(difficultySelect.value === "medium"){
             timerValue -= 22;
+            timeDisplay.textContent = timerValue;
           }else if(difficultySelect.value === "hard"){
             timerValue -= 25;
+            timeDisplay.textContent = timerValue;
           }
-          timeDisplay.textContent = timerValue;
         }
       }
       drop.remove();
