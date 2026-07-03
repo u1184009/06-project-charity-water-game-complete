@@ -21,12 +21,26 @@
                 <span>Filled Cans: <span id="score" aria-label="Current score">0</span></span>
             </div>
             <div class="timer" aria-live="polite">Time: <span id="time" aria-label="Time remaining">30</span>s</div>
-            <div class="lives" aria-live="polite">Cans Left:<span id="lives" aria-label="Remaining lives">💧 💧 💧</span></div>
+            <div class="lives" aria-live="polite">Cans Left:<span id="lives" aria-label="Remaining lives">💧 💧 💧 💧 💧</span></div>
             <button id="start-btn" aria-label="Start the game">Start Game</button>
             <button id="restart-btn" aria-label="Restart the game">Restart Game</button>
         </div>
         
         <div id="game-container" role="img" aria-label="Interactive water drop catching game - drag the jerry can to catch water drops">
+
+          <div class="difficulty-panel">
+              <label for="difficulty">Difficulty:</label>
+              <select id="difficulty" aria-label="Select game difficulty">
+                  <option value="easy">Easy</option>
+                  <option value="medium" selected>Medium</option>
+                  <option value="hard">Hard</option>
+              </select>
+          </div>
+
+          <div class="milestone-panel" aria-live="polite">
+            <p id="milestone-message"></p>
+          </div>
+          
           <img src="img/water-can-transparent.png" id="water-can" alt="Water Can" aria-label="Draggable water container">
         </div>
     </main>

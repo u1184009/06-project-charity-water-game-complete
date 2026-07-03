@@ -206,10 +206,6 @@ body {
     font-size: 16px;
 }
 
-.bad-drop {
-    
-}
-
 .confetti-piece {
     position: absolute;
     width: 10px;
@@ -221,6 +217,7 @@ body {
     pointer-events: none;
 }
 
+
 @keyframes confettiFall {
     0% {
         transform: translate3d(0, 0, 0) rotate(0deg);
@@ -231,6 +228,7 @@ body {
         opacity: 0;
     }
 }
+
 
 .game-title {
     color: #333333;
@@ -284,6 +282,80 @@ body {
     margin-bottom: 20px;
     text-align: center;
     padding: 0 20px;
+}
+
+/* ===========================
+   Difficulty Selector
+=========================== */
+
+.difficulty-panel {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 10px 14px;
+
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+
+    z-index: 15;
+}
+
+.difficulty-panel label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    white-space: nowrap;
+}
+
+.difficulty-panel select {
+    padding: 6px 10px;
+    font-size: 15px;
+    border: 2px solid #2E9DF7;
+    border-radius: 6px;
+    background: white;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.difficulty-panel select:focus {
+    outline: 3px solid #FFC907;
+    outline-offset: 2px;
+}
+
+.milestone-panel {
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 220px;
+    max-width: min(320px, calc(100% - 30px));
+    padding: 12px 16px;
+
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.16);
+
+    z-index: 15;
+}
+
+.milestone-panel p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: #159A48;
+    text-align: center;
+    line-height: 1.3;
 }
 
 @keyframes dropFall {
@@ -437,6 +509,36 @@ body {
     #water-can {
         width: 50px;
         bottom: 15%;
+    }
+
+    .difficulty-panel {
+        top: 10px;
+        left: 10px;
+        padding: 8px 10px;
+        gap: 8px;
+    }
+
+    .difficulty-panel label {
+        font-size: 14px;
+    }
+
+    .difficulty-panel select {
+        font-size: 14px;
+        padding: 5px 8px;
+    }
+
+    .milestone-panel {
+        top: auto;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        min-width: 180px;
+        max-width: min(220px, calc(100% - 20px));
+        padding: 8px 10px;
+    }
+
+    .milestone-panel p {
+        font-size: 13px;
     }
 }
 
