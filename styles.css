@@ -26,10 +26,11 @@ Fonts:
 
 body {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
     min-height: 100vh;
-    background-color: #f7d64a;
+    background-color: #2E9DF7;
     font-family: Arial, sans-serif;
 }
 
@@ -40,27 +41,46 @@ body {
     gap: 20px;
 }
 
+/* ===== Improved Desktop Score Panel ===== */
+
 .score-panel {
     display: flex;
-    justify-content: space-between;  /* Space between score and button */
+    justify-content: center;
     align-items: center;
-    width: 800px;
-    padding: 10px;
+    gap: 32px;              /* better spacing between all items */
+
+    padding: 16px 22px;     /* more breathing room */
     background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+
+    width: 100%;          /* allow it to expand */
+    max-width: 900px;  
 }
 
-.timer {
-    flex: 0 1 auto;
-    font-size: 24px;
-    font-weight: bold;
-}
-
+/* Each info block (score, timer, lives) */
+.score,
+.timer,
 .lives {
-    flex: 0 1 auto;
-    font-size: 24px;
-    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;              /* space between icon/text */
+    font-size: 22px;
+    font-weight: 600;
+    white-space: nowrap;    /* prevents awkward wrapping */
+}
+
+/* Score icon sizing consistency */
+.score-can-icon {
+    width: 30px;
+    height: auto;
+    display: inline-block;
+}
+
+/* Button spacing improvement */
+#start-btn,
+#restart-btn {
+    margin-left: 8px;
 }
 
 #game-container {
@@ -81,45 +101,42 @@ body {
 
 #start-btn {
     padding: 8px 16px;
-    background-color: #8BD1CB;
+    background-color: #159A48;
     color: white;
-    border: none;
+    border: 2px solid #000000;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
+    font-weight: bold;
+}
+
+#start-btn:focus {
+    outline: 3px solid #FFC907;
+    outline-offset: 2px;
 }
 
 #restart-btn:hover {
-    background-color: #8BD1CB;
+    background-color: #0f7a34;
 }
 
 #restart-btn {
     padding: 8px 16px;
-    background-color: #8BD1CB;
+    background-color: #159A48;
     color: white;
-    border: none;
+    border: 2px solid #000000;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
-}
-
-#start-btn:hover {
-    background-color:#8BD1CB;
-}
-
-.score {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex: 0 1 auto;  /* Don't grow, can shrink, auto basis */
-    font-size: 24px;
     font-weight: bold;
 }
 
-.score-can-icon {
-    width: 28px;
-    height: auto;
-    display: inline-block;
+#restart-btn:focus {
+    outline: 3px solid #FFC907;
+    outline-offset: 2px;
+}
+
+#start-btn:hover {
+    background-color: #0f7a34;
 }
 
 /* Water drops */
@@ -216,18 +233,57 @@ body {
 }
 
 .game-title {
-    color: #131313;
+    color: #333333;
     font-size: 48px;
     margin-top: 0;
     margin-bottom: 5px;  /* reduced from 20px */
     text-align: center;
+    font-family: 'Baskerville', 'Georgia', serif;
+}
+
+.brought-to-you-by {
+    color: #333333;
+    font-size: 20px;
+    margin: 10px 0 15px 0;
+    text-align: center;
+    font-weight: normal;
+    letter-spacing: 1px;
+    font-family: 'Baskerville', 'Georgia', serif;
+}
+
+.game-tagline{
+  color: #333333;
+  font-family: 'Baskerville', 'Georgia', serif;
+}
+
+.charity-section {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+    padding: 0 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.black-jerry-can {
+    width: 60px;
+    height: auto;
+    flex-shrink: 0;
+}
+
+.charity-logo {
+    height: 50px;
+    width: auto;
+    flex-shrink: 0;
 }
 
 .game-tagline {
-    color: #131313;
+    color: #333333;
     font-size: 18px;
     margin-bottom: 20px;
     text-align: center;
+    padding: 0 20px;
 }
 
 @keyframes dropFall {
@@ -256,5 +312,234 @@ body {
         top: auto;
         bottom: 12%;
         transform: translateX(-50%);
+    }
+
+    .score-panel {
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 12px;
+    }
+
+    .score {
+        font-size: 18px;
+        flex: 0 1 100%;
+    }
+
+    .timer {
+        font-size: 18px;
+        flex: 0 1 auto;
+    }
+
+    .lives {
+        font-size: 18px;
+        flex: 0 1 auto;
+    }
+
+    #start-btn, #restart-btn {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+
+    .brought-to-you-by {
+        font-size: 14px;
+        margin: 8px 0 12px 0;
+    }
+
+    .charity-section {
+        gap: 12px;
+        margin-bottom: 16px;
+        padding: 0 15px;
+    }
+
+    .black-jerry-can {
+        width: 50px;
+    }
+
+    .charity-logo {
+        height: 40px;
+    }
+
+    .game-tagline {
+        font-size: 16px;
+        padding: 0 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    .game-wrapper {
+        gap: 15px;
+    }
+
+     .score-panel {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        width: 95vw;
+        max-width: 100%;
+        padding: 12px;
+        gap: 10px;
+        box-sizing: border-box;
+    }
+
+    .score,
+    .timer,
+    .lives {
+        justify-content: center;
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .score-can-icon {
+        width: 24px;
+    }
+
+   
+
+    
+    /* BUTTON FIX */
+    #start-btn,
+    #restart-btn {
+        width: 100%;          /* forces buttons inside panel */
+        max-width: 100%;
+        margin: 0;            /* removes any overflow push */
+        box-sizing: border-box;
+    }
+
+    .game-title {
+        font-size: 36px;
+        margin-bottom: 3px;
+        font-family: 'Baskerville', 'Georgia', serif;
+    }
+
+    .brought-to-you-by {
+        font-size: 14px;
+        margin: 6px 0 10px 0;
+    }
+
+    .charity-logo {
+        height: 35px;
+    }
+
+    .game-tagline {
+      font-size: 18px;
+      line-height: 1.6;
+      padding: 0 20px;
+      margin-bottom: 24px;
+    }
+
+    #game-container {
+        width: calc(100vw - 32px);
+        max-width: 95vw;
+        height: 50vh;
+        margin: 0 auto 20px;
+    }
+
+    #water-can {
+        width: 50px;
+        bottom: 15%;
+    }
+}
+
+@media (max-width: 400px) {
+    .game-wrapper {
+        gap: 10px;
+    }
+
+    .score-panel {
+        padding: 8px;
+        gap: 6px;
+    }
+
+    .score {
+        font-size: 14px;
+    }
+
+    .timer {
+        font-size: 14px;
+    }
+
+    .lives {
+        font-size: 14px;
+    }
+
+    #start-btn, #restart-btn {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+
+    .game-title {
+        font-size: 28px;
+        font-family: 'Baskerville', 'Georgia', serif;
+    }
+
+    .brought-to-you-by {
+        font-size: 14px;
+    }
+
+    .charity-logo {
+        height: 30px;
+    }
+
+    .game-tagline {
+        font-size: 17px;
+        line-height: 1.6;
+        padding: 0 18px;
+        margin-bottom: 20px;
+    }
+
+    #game-container {
+        width: calc(100vw - 24px);
+        height: 45vh;
+        margin: 0 auto 16px;
+    }
+
+    .score-can-icon {
+        width: 20px;
+    }
+
+    #water-can {
+        width: 45px;
+        bottom: 15%;
+    }
+}
+
+/* Footer Styles */
+.charity-footer {
+    width: 100%;
+    padding: 24px;
+    text-align: center;
+    font-size: 20px;
+    color: #333333;
+    margin-top: auto;
+    font-family: 'Baskerville', 'Georgia', serif;
+}
+
+.charity-footer p {
+    margin: 0;
+}
+
+.charity-footer a {
+    color: #333333;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.charity-footer a:hover {
+    color: #8BD1CB;
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .charity-footer {
+        padding: 15px 10px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 400px) {
+    .charity-footer {
+        padding: 12px 8px;
+        font-size: 12px;
     }
 }

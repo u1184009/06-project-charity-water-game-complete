@@ -7,24 +7,33 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="game-wrapper">
-        <h1 class="game-title">Water Drop</h1>
+    <main>
+        <div class="game-wrapper">
+            <h1 class="game-title">Water Drop</h1>
+        <p class="brought-to-you-by">brought to you by</p>
+        <div class="charity-section">
+            <img src="img/cw_logo-horizontal.png" class="charity-logo" alt="charity: water logo">
+        </div>
         <p class="game-tagline">It's a blizzard and you need water! Drag the jerry can and catch the drops of water and falling snow, avoid the sticks!</p>
-        <div class="score-panel">
-            <div class="score">
+        <div class="score-panel" role="region" aria-label="Game status">
+            <div class="score" aria-live="polite">
                 <img src="img/water-can-transparent.png" class="score-can-icon" alt="Water can icon">
-                <span>Filled Cans: <span id="score">0</span></span>
+                <span>Filled Cans: <span id="score" aria-label="Current score">0</span></span>
             </div>
-            <div class="timer">Time: <span id="time">30</span>s</div>
-            <div class="lives">Cans Left:<span id="lives">💧 💧 💧</span></div>
-            <button id="start-btn">Start Game</button>
-            <button id="restart-btn">Restart Game</button>
+            <div class="timer" aria-live="polite">Time: <span id="time" aria-label="Time remaining">30</span>s</div>
+            <div class="lives" aria-live="polite">Cans Left:<span id="lives" aria-label="Remaining lives">💧 💧 💧</span></div>
+            <button id="start-btn" aria-label="Start the game">Start Game</button>
+            <button id="restart-btn" aria-label="Restart the game">Restart Game</button>
         </div>
         
-        <div id="game-container">
-          <img src="img/water-can-transparent.png" id="water-can" alt="Water Can">
+        <div id="game-container" role="img" aria-label="Interactive water drop catching game - drag the jerry can to catch water drops">
+          <img src="img/water-can-transparent.png" id="water-can" alt="Water Can" aria-label="Draggable water container">
         </div>
-    </div>
+    </main>
+    
+    <footer class="charity-footer">
+        <p>Learn more at <a href="https://www.charitywater.org" target="_blank" rel="noopener noreferrer">charity: water</a> | <a href="https://www.charitywater.org/donate" target="_blank" rel="noopener noreferrer">Donate</a></p>
+    </footer>
     
     <script src="script.js"></script>
 </body>

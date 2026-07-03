@@ -67,15 +67,29 @@ function createDrop() {
   drop.appendChild(dropImage);
 
   // Make drops different sizes for visual variety
-  const initialSize = 100;
+  // Scale drop size based on game container width for responsive design
+  const gameWidth = document.getElementById("game-container").offsetWidth;
+  const containerHeight = document.getElementById("game-container").offsetHeight;
+  
+  // Calculate initial size based on container width (responsive)
+  let initialSize;
+  if (gameWidth <= 400) {
+    initialSize = 40; // Small phones
+  } else if (gameWidth <= 500) {
+    initialSize = 55; // Medium phones
+  } else if (gameWidth <= 700) {
+    initialSize = 75; // Tablets
+  } else {
+    initialSize = 100; // Desktop
+  }
+  
   const sizeMultiplier = Math.random() * 0.8 + 0.5;
   const size = initialSize * sizeMultiplier;
   drop.style.width = drop.style.height = `${size}px`;
 
   // Position the drop randomly across the game width
-  // Subtract 60 pixels to keep drops fully inside the container
-  const gameWidth = document.getElementById("game-container").offsetWidth;
-  const xPosition = Math.random() * (gameWidth - 60);
+  // Subtract size to keep drops fully inside the container
+  const xPosition = Math.random() * (gameWidth - size);
   drop.style.left = xPosition + "px";
 
   // Make drops fall for 4 seconds
@@ -221,7 +235,7 @@ function createConfettiBurst() {
 }
 
 function checkCollision(drop){
-  const collisonInterval = setInterval(()=>{
+  const collisionInterval = setInterval(()=>{
     if (!drop.parentElement){
       clearInterval(collisionInterval);
       return;
@@ -336,6 +350,9 @@ function restartGame() {
   waterCan.src = canStates[0];
 
   // Return the can to its initial position
-  waterCan.style.left = `${initialCanPosition.left}px`;
-  waterCan.style.top = `${initialCanPosition.top}px`;
+  const startX = (gameContainer.clientWidth - waterCan.offsetWidth) / 2;
+  const startY = gameContainer.clientHeight - waterCan.offsetHeight - 20;
+
+  waterCan.style.left = `${startX}px`;
+  waterCan.style.top = `${startY}px`;
 }
